@@ -34,10 +34,12 @@
 					<th>Édition</th>
 				</thead>
 				<tbody>
-					<?php include 'database.php'; 	//on inclut notre fichier de connection $pdo = Database::connect(); 
-					 								//on se connecte à la base $sql = 'SELECT * FROM user ORDER BY id DESC'; 
-					 								//on formule notre requete foreach ($pdo->query($sql) as $row){  
-					 								//on cree les lignes du tableau avec chaque valeur retournée}
+					<?php include 'database.php'; 	
+					$pdo = Database::connect(); 					//on inclut notre fichier de connection 						
+					$sql = 'SELECT * FROM user ORDER BY id DESC'; 	//on se connecte à la base 
+					foreach ($pdo->query($sql) as $row){  			//on formule notre requete  
+					 
+							//on créé les lignes du tableau avec chaque valeur retournée
 							echo '<br /><tr>';
 	                			echo '<td>' . $row['name'] . '</td><p>';
 	                			echo '<td>' . $row['firstname'] . '</td><p>';
@@ -61,7 +63,7 @@
                         
                         }
                     
-                    	Database::disconnect(); //on se deconnecte de la base
+                    	Database::disconnect(); //on se déconnecte de la base
                         
                         ;
                     ?>        
