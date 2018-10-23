@@ -54,7 +54,7 @@
     							echo '<tr>';
                                     echo '<td>';
                                         // un autre td pour le bouton d'edition
-                                        echo '<a class="btn btn-light btn-block" href="edit.php?id=' . $row['id'] . '">Éditer</a>';
+                                        echo '<a class="btn btn-light btn-block" href="edit.php?id=' . $row['id'] . '">En voir plus</a>';
                                   
                                         // un autre td pour le bouton d'update
                                         echo '<a class="btn btn-secondary btn-block" href="update.php?id=' . $row['id'] . '">Mettre à Jour</a>';
