@@ -12,72 +12,79 @@
 
 </head>
 <body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">Crud en Php</h1>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <a href="add.php" class="btn btn-success btn-lg btn-block">Ajouter un Utilisateur</a>
+            <br />
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <th>Édition</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Age</th>
+                        <th>Téléphone</th>
+                        <th>Adresse E-mail</th>
+                        <th>Pays</th>
+                        <th>Commentaire</th>
+                        <th>Métiers</th>
+                        <th>Url</th>
+                    </thead>
+                    <br />
+			        <tbody>
+    					<?php 
+                            //on inclut notre fichier de connection 
+                            include 'database.php'; 	
+    					    
+                            //on se connecte à la base 
+                            $pdo = Database::connect();
 
-	<div class="container">
-		<div class="row">
-			<h1>C.R.U.D en P.H.P</h1>
-		</div>
-		<div class="row">
-			<a href="add.php" class="btn btn-success">Ajouter un utilisateur</a>
-			<div class="table-responsive">
-				<table class="table table-hover table-bordered" "></table>
-				<thead>
-					<th>Nom</th>
-					<th>Prénom</th>
-					<th>Age</th>
-					<th>Téléphone</th>
-					<th>E-mail</th>
-					<th>Pays</th>
-					<th>Commentaire</th>
-					<th>Métier</th>
-					<th>Url</th>
-					<th>Édition</th>
-				</thead>
-				<tbody>
-					<?php include 'database.php'; 	
-					$pdo = Database::connect(); 					//on inclut notre fichier de connection 						
-					$sql = 'SELECT * FROM user ORDER BY id DESC'; 	//on se connecte à la base 
-					foreach ($pdo->query($sql) as $row){  			//on formule notre requete  
-					 
-							//on créé les lignes du tableau avec chaque valeur retournée
-							echo '<br /><tr>';
-	                			echo '<td>' . $row['name'] . '</td><p>';
-	                			echo '<td>' . $row['firstname'] . '</td><p>';
-	                    		echo '<td>' . $row['age'] . '</td><p>';
-	                    		echo '<td>' . $row['tel'] . '</td><p>';
-	                    		echo '<td>' . $row['email'] . '</td><p>';
-	                    		echo '<td>' . $row['pays'] . '</td><p>';
-		                        echo '<td>' . $row['comment'] . '</td><p>';
-		                        echo '<td>' . $row['metier'] . '</td><p>';
-		                        echo '<td>' . $row['url'] . '</td><p>';
-		                        echo '<td>';
-		                        	echo '<a class="btn" href="edit.php?id=' . $row['id'] . '">Read</a>';// un autre td pour le bouton d'edition
-		                        echo '</td><p>';
-		                        echo '<td>';
-		                        	echo '<a class="btn btn-success" href="update.php?id=' . $row['id'] . '">Update</a>';// un autre td pour le bouton d'update
-		                        echo '</td><p>';
-		                        echo'<td>';
-		                        	echo '<a class="btn btn-danger" href="delete.php?id=' . $row['id'] . ' ">Delete</a>';// un autre td pour le bouton de suppression
-		                        echo '</td><p>';
-	                        echo '</tr><p>';
-                        
-                        }
-                    
-                    	Database::disconnect(); //on se déconnecte de la base
-                        
-                        ;
-                    ?>        
-					
-				</tbody>
-			</div>
-		</div>
-	</div>
+    					    //on formule notre requete
+                            $sql = 'SELECT * FROM testcrudphp ORDER BY id DESC';
+                            
+                            foreach ($pdo->query($sql) as $row) {  			  
+    							
+                                //on créé les lignes du tableau avec chaque valeur retournée
+    							echo '<tr>';
+                                    echo '<td>';
+                                        // un autre td pour le bouton d'edition
+                                        echo '<a class="btn btn-light btn-block" href="edit.php?id=' . $row['id'] . '">Éditer</a>';
+                                  
+                                        // un autre td pour le bouton d'update
+                                        echo '<a class="btn btn-secondary btn-block" href="update.php?id=' . $row['id'] . '">Mettre à Jour</a>';
+                                    
+                                        // un autre td pour le bouton de suppression
+                                        echo '<a class="btn btn-danger btn-block" href="delete.php?id=' . $row['id'] . ' ">Effacer</a>';
+                                    echo '</td>';
+                                    echo'<td>' . $row['name'] . '</td>';
+                                    echo'<td>' . $row['firstname'] . '</td>';
+                                    echo'<td>' . $row['age'] . '</td>';                            
+                                    echo'<td>' . $row['tel'] . '</td>';
+                                    echo'<td>' . $row['email'] . '</td>';
+                                    echo'<td>' . $row['country'] . '</td>';
+                                    echo'<td>' . $row['comment'] . '</td>';
+                                    echo'<td>' . $row['job'] . '</td>';
+                                    echo'<td>' . $row['url'] . '</td>';
+                                echo '</tr>';
+                            }
+                            //on se déconnecte de la base
+                            Database::disconnect(); 
+                        ?>       
+			        </tbody>
+                </table>    
+		    </div>
+	    </div>
 	<!-- jQuery, Popper.js, Bootstrap.js -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<!-- Main Js -->
 	<script src="js/main.js"></script>
-
 </body>
 </html>

@@ -7,7 +7,7 @@ class Database
 	private static $dbHost         = 'localhost';
 	private static $dbUserName     = 'pmauser';
 	private static $dbUserPassword = 'root'; 
-	private static $cont           = 'null';
+	private static $cont           = null;
 
 	public function __construct() 
 	{
@@ -24,7 +24,7 @@ class Database
 			try 
 			{
 
-				self::$cont = new PDO( "mysql:host=".self::$dbHost.";"."dbname=".self::$dbName, self::$dbUsername, self::$dbUserPassword);
+				self::$cont = new PDO( "mysql:host=".self::$dbHost.";"."dbname=".self::$dbName, self::$dbUserName, self::$dbUserPassword);
 
 			}
 
