@@ -105,7 +105,7 @@
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>C.R.U.D en Php</title>
+	<title>Crud en Php</title>
 
 	<!-- Boostrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -116,9 +116,7 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<h1 class="col-12 text-center">Crud en Php</h1>
-			<br />
-			<h2 class="col-12 text-center">Ajouter un contact</h2>
+			<h1 class="col-12 text-center">Ajouter un contact</h1>
 		</div>
 		<br />
 		<form class="col-12" method="post" action="add.php">
