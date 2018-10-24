@@ -58,7 +58,7 @@
 		if (empty($tel)) { 
 			$telError = 'Please enter phone'; 
 			$valid = false; 
-		} else if (!preg_match("#^0[1-68]([-./ ]?[0-9]{2}){4}$#",$tel)) { 
+		} else if (!preg_match("#^0[1-99]([-./ ]?[0-9]{2}){4}$#",$tel)) { 
 			$telError = 'Please enter a valid phone'; 
 			$valid = false; 
 		} 
